@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F84EF0723E45BA900446323 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F84EF0623E45BA900446323 /* UserProfile.swift */; };
+		7FBC681C23EACB4A005B9224 /* PetsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC681B23EACB4A005B9224 /* PetsList.swift */; };
+		7FBC681E23EACB61005B9224 /* PetDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC681D23EACB61005B9224 /* PetDetail.swift */; };
+		7FBC682023EACB74005B9224 /* PetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC681F23EACB74005B9224 /* PetCell.swift */; };
+		7FBC682223EACB89005B9224 /* PetRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC682123EACB89005B9224 /* PetRegister.swift */; };
 		7FD8A3D923D874F500090E78 /* UserRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD8A3D823D874F500090E78 /* UserRegistrationViewController.swift */; };
 		7FD8A3DB23D8751600090E78 /* RecoverPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD8A3DA23D8751600090E78 /* RecoverPasswordViewController.swift */; };
 		7FDEDFB723D841CB00EBAD26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEDFB623D841CB00EBAD26 /* AppDelegate.swift */; };
@@ -15,10 +20,16 @@
 		7FDEDFBE23D841CE00EBAD26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FDEDFBD23D841CE00EBAD26 /* Assets.xcassets */; };
 		7FDEDFC123D841CE00EBAD26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FDEDFBF23D841CE00EBAD26 /* LaunchScreen.storyboard */; };
 		864CA1DFE7A303780B1FAE59 /* Pods_all_pods_MyPets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8924D2565E9C31A86CC0BD /* Pods_all_pods_MyPets.framework */; };
+		89F642DA23ECA715009C6E29 /* EditPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F642D923ECA715009C6E29 /* EditPassword.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4E8924D2565E9C31A86CC0BD /* Pods_all_pods_MyPets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_all_pods_MyPets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F84EF0623E45BA900446323 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		7FBC681B23EACB4A005B9224 /* PetsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsList.swift; sourceTree = "<group>"; };
+		7FBC681D23EACB61005B9224 /* PetDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetail.swift; sourceTree = "<group>"; };
+		7FBC681F23EACB74005B9224 /* PetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCell.swift; sourceTree = "<group>"; };
+		7FBC682123EACB89005B9224 /* PetRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRegister.swift; sourceTree = "<group>"; };
 		7FD8A3D823D874F500090E78 /* UserRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationViewController.swift; sourceTree = "<group>"; };
 		7FD8A3DA23D8751600090E78 /* RecoverPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewController.swift; sourceTree = "<group>"; };
 		7FDEDFB323D841CB00EBAD26 /* MyPets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPets.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,6 +39,7 @@
 		7FDEDFBD23D841CE00EBAD26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7FDEDFC023D841CE00EBAD26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7FDEDFC223D841CE00EBAD26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89F642D923ECA715009C6E29 /* EditPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPassword.swift; sourceTree = "<group>"; };
 		CEDFCD0CD28FA462574CC478 /* Pods-all_pods-MyPets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-all_pods-MyPets.debug.xcconfig"; path = "Target Support Files/Pods-all_pods-MyPets/Pods-all_pods-MyPets.debug.xcconfig"; sourceTree = "<group>"; };
 		DBE8F41F1B1A8FF268A63146 /* Pods-all_pods-MyPets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-all_pods-MyPets.release.xcconfig"; path = "Target Support Files/Pods-all_pods-MyPets/Pods-all_pods-MyPets.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,9 +99,15 @@
 				7FD8A3D823D874F500090E78 /* UserRegistrationViewController.swift */,
 				7FD8A3DA23D8751600090E78 /* RecoverPasswordViewController.swift */,
 				7FDEDFBA23D841CB00EBAD26 /* Main.storyboard */,
+				89F642D923ECA715009C6E29 /* EditPassword.swift */,
 				7FDEDFBD23D841CE00EBAD26 /* Assets.xcassets */,
 				7FDEDFBF23D841CE00EBAD26 /* LaunchScreen.storyboard */,
 				7FDEDFC223D841CE00EBAD26 /* Info.plist */,
+				7F84EF0623E45BA900446323 /* UserProfile.swift */,
+				7FBC681B23EACB4A005B9224 /* PetsList.swift */,
+				7FBC681D23EACB61005B9224 /* PetDetail.swift */,
+				7FBC681F23EACB74005B9224 /* PetCell.swift */,
+				7FBC682123EACB89005B9224 /* PetRegister.swift */,
 			);
 			path = MyPets;
 			sourceTree = "<group>";
@@ -210,9 +228,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FDEDFB923D841CB00EBAD26 /* LoginViewController.swift in Sources */,
+				7FBC682023EACB74005B9224 /* PetCell.swift in Sources */,
+				7FBC681C23EACB4A005B9224 /* PetsList.swift in Sources */,
 				7FD8A3D923D874F500090E78 /* UserRegistrationViewController.swift in Sources */,
+				7FBC682223EACB89005B9224 /* PetRegister.swift in Sources */,
+				7F84EF0723E45BA900446323 /* UserProfile.swift in Sources */,
+				89F642DA23ECA715009C6E29 /* EditPassword.swift in Sources */,
 				7FD8A3DB23D8751600090E78 /* RecoverPasswordViewController.swift in Sources */,
 				7FDEDFB723D841CB00EBAD26 /* AppDelegate.swift in Sources */,
+				7FBC681E23EACB61005B9224 /* PetDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
