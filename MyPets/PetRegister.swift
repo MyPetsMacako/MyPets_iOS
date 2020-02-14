@@ -11,7 +11,8 @@ import Alamofire
 
 import AlamofireImage
 
-class PetRegister: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+var selected_image: UIImageView?
+class PetRegister: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
     @IBOutlet weak var pet_image: UIImageView!
     @IBOutlet weak var pet_name: UITextField!
@@ -20,27 +21,37 @@ class PetRegister: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     @IBOutlet weak var pet_color: UITextField!
     @IBOutlet weak var pet_weight: UITextField!
     @IBOutlet weak var birthday_picker: UIDatePicker!
+    @IBOutlet weak var button_save: UIButton!
+    @IBOutlet weak var loader: UIActivityIndicatorView!
     
     let species = ["Perro", "Gato", "Reptil", "Roedor", "Ave"]
-    var selected_specie = "Gato"
+    var selected_specie = "Perro"
     var date_str: String?
     
     var name: String?
     var breed: String?
     var color: String?
     var weight: String?
+    var image: UIImage?
+    var image_picker: ImagePicker!
     
     override func viewWillAppear(_ animated: Bool) {
+        pet_image.image = pet_image.image?.af_imageRoundedIntoCircle()
+        self.image_picker = ImagePicker(presentationController: self, delegate: self as! ImagePickerDelegate)
+        loader.isHidden = true
+        let bgSetter: BGSet = BGSet()
+        bgSetter.setBackground(view: self.view)
         species_picker.dataSource = self
         species_picker.delegate = self
     }
     
-    func setData() -> Bool {
-        if !pet_name.text!.isEmpty && !pet_breed.text!.isEmpty && !pet_color.text!.isEmpty && !pet_weight.text!.isEmpty{
+    func checkData() -> Bool {
+        if !pet_name.text!.isEmpty && !pet_breed.text!.isEmpty && !pet_color.text!.isEmpty && !pet_weight.text!.isEmpty && pet_image.image != nil{
             name = pet_name.text
             breed = pet_breed.text
             color = pet_color.text
             weight =  pet_weight.text!
+            image = pet_image.image
             print("Datos correctos")
             return true
         }else{
@@ -52,12 +63,8 @@ class PetRegister: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     }
     @IBAction func save_button(_ sender: UIButton) {
         if date_str != nil {
-            if setData(){
+            if checkData(){
                 postPet()
-            }else{
-                let alert = UIAlertController(title: "Error", message: "Los datos no son correctos", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "ok", style: .cancel, handler: { (accion) in}))
-                self.present(alert,animated: true, completion: nil)
             }
         }else{
             let alert = UIAlertController(title: "Error", message: "La fecha es incorrecta", preferredStyle: .alert)
@@ -67,26 +74,61 @@ class PetRegister: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     }
     
     func postPet(){
-        let url = URL(string: "http://localhost:8888/laravel-ivanodp/MyPets_API/public/index.php/api/petsRegister")
+        let url = URL(string: "http://localhost:8888/MyPets_API/public/index.php/api/petsRegister")
         let token = UserDefaults.standard.string(forKey: "token")
         let header = ["Authorization": token]
         
-        let json = ["name": name!, "species": selected_specie, "breed": breed!, "colour": color!, "weight": weight!, "birth_date": date_str!] as [String : Any]
-        print(header)
-        print(json)
+        let json = ["name": name!, "species": selected_specie, "breed": breed!, "colour": color!, "weight": weight!, "birth_date": date_str!]
+        loader.isHidden = false
+        button_save.isEnabled = false
+        /*
         Alamofire.request(url!, method: .post, parameters: json, encoding: JSONEncoding.default, headers: (header as! HTTPHeaders)).responseJSON { (response) in
            
             if response.response?.statusCode == 200{
                 print("mascota registrada")
                 _ = self.navigationController?.popViewController(animated: true)
             }else if response.response?.statusCode == 401{
+                self.loader.isHidden = true
+                self.button_save.isEnabled = true
                 let alert = UIAlertController(title: "Error", message: "No ha sido posible registrar la mascota", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "ok", style: .cancel, handler: { (accion) in}))
                 self.present(alert,animated: true, completion: nil)
             }else{
+                self.button_save.isEnabled = true
+                self.loader.isHidden = true
                 print("Peticion incorrecta")
             }
         }
+        */
+        let image_data = pet_image.image?.pngData()
+        print(image_data)
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            for (key, value) in json {
+                multipartFormData.append(value.data(using: .utf8)!, withName: key)
+            }
+            multipartFormData.append(image_data!, withName: "image", fileName: "image.png", mimeType: "image/jpeg")
+        }, to:url!,
+           method: .post,
+           headers: (header as! HTTPHeaders))
+        { (result) in
+            switch result {
+            case .success(let upload, _, _):
+                upload.responseJSON { response in
+                    print(response.response?.statusCode)
+                    print(response.result.value)
+                    self.loader.isHidden = true
+                    self.button_save.isEnabled = true
+                }
+            case .failure(let encodingError):
+                print("ERROR ", encodingError)
+                self.loader.isHidden = true
+                self.button_save.isEnabled = true
+            }
+        }
+    }
+    
+    @IBAction func button_image(_ sender: UIButton) {
+        self.image_picker.present(from: sender)
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -110,5 +152,16 @@ class PetRegister: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         date_formatter.dateFormat = "yyyy-MM-dd"
         date_str = date_formatter.string(from: sender.date)
         print(date_str!)
+    }
+}
+var image_global: UIImage?
+extension PetRegister: ImagePickerDelegate{
+    public func didSelect(image: UIImage?) {
+        if image != nil{
+            image_global = image
+            self.pet_image.image = image
+            pet_image.image = pet_image.image!.af_imageRoundedIntoCircle()
+            
+        }
     }
 }

@@ -24,6 +24,8 @@ class UserRegistrationViewController: UIViewController {
     
     override func viewDidLoad() {
         loader.isHidden = true
+        let bgSetter: BGSet = BGSet()
+        bgSetter.setBackground(view: self.view)
         super.viewDidLoad()
         
     }
@@ -55,7 +57,7 @@ class UserRegistrationViewController: UIViewController {
         button_register.isEnabled = false
         loader.isHidden = false
         
-        let url = URL(string: "http://localhost:8888/laravel-ivanodp/MyPets_API/public/index.php/api/register")!
+        let url = URL(string: "http://localhost:8888/MyPets_API/public/index.php/api/register")!
         let json = ["fullname": name, "nickname": nick, "email": email, "password": password]
         Alamofire.request(url, method: .post, parameters: json, encoding: JSONEncoding.default, headers: nil).responseJSON {
             (response) in

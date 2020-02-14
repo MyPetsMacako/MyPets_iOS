@@ -30,9 +30,11 @@ class UserProfile: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         get_user_data()
+        let bgSetter: BGSet = BGSet()
+        bgSetter.setBackground(view: self.view)
     }
     func get_user_data()  {
-        let url = URL(string: "http://localhost:8888/laravel-ivanodp/MyPets_API/public/index.php/api/showUserData")
+        let url = URL(string: "http://localhost:8888/MyPets_API/public/index.php/api/showUserData")
         
         let token = UserDefaults.standard.string(forKey: "token")
         

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyPets/RecoverPasswordViewController.swift"
-            timestampString = "602586273.397512"
+            timestampString = "603027643.953387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "recover_password_button(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyPets/UserProfile.swift"
-            timestampString = "602685777.11731"
+            timestampString = "603027643.953511"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
@@ -119,13 +119,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyPets/UserProfile.swift"
-            timestampString = "602685777.1177239"
+            timestampString = "603027643.953567"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "change_password()"
-            landmarkType = "7">
+            startingLineNumber = "65"
+            endingLineNumber = "65">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

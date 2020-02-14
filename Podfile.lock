@@ -2,20 +2,24 @@ PODS:
   - Alamofire (4.9.1)
   - AlamofireImage (3.6.0):
     - Alamofire (~> 4.9)
+  - JTAppleCalendar (7.1.8)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
+  - JTAppleCalendar (~> 7.1)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireImage
+    - JTAppleCalendar
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
+  JTAppleCalendar: b7fb40852f5f319fe55c8ec3861f1de0edc99cc8
 
-PODFILE CHECKSUM: 64458fabbc6d13bcb273b39a80e1380e5bdac78f
+PODFILE CHECKSUM: 647b7582af9ea18ff933d1758d1560c777a10509
 
 COCOAPODS: 1.8.4

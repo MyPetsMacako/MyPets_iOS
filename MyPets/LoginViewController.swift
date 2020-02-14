@@ -14,15 +14,16 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var email_login_text: UITextField!
     @IBOutlet weak var password_login_text: UITextField!
+    @IBOutlet weak var button_login: UIButton!
     
     @IBOutlet weak var loader: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
         loader.isHidden = true
-        
-        email_login_text.text = "ivanobejo@hotmail.es"
+        let bgSetter: BGSet = BGSet()
+        bgSetter.setBackground(view: self.view)
+        email_login_text.text = "rober@cev.com"
         password_login_text.text = "12345678"
-        
     }
 
     @IBAction func login_button(_ sender: Any) {
@@ -39,9 +40,10 @@ class LoginViewController: UIViewController {
     
     func LoginUser(email: String, password: String) {
         
-        let url = URL(string: "http://localhost:8888/laravel-ivanodp/MyPets_API/public/index.php/api/login")!
+        let url = URL(string: "http://localhost:8888/MyPets_API/public/index.php/api/login")!
         let json = ["email": email, "password": password]
         
+        button_login.isEnabled = false
         loader.isHidden = false
         Alamofire.request(url, method: .post, parameters: json, encoding: JSONEncoding.default, headers: nil).responseJSON {
             (response) in
@@ -56,10 +58,12 @@ class LoginViewController: UIViewController {
                 }
             case 401:
                 self.loader.isHidden = true
+                self.button_login.isEnabled = true
                 let alert = UIAlertController(title: "Error", message: "Los datos introducidos no son correctos", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "ok", style: .cancel, handler: { (accion) in}))
                 self.present(alert,animated: true, completion: nil)
             default:
+                self.button_login.isEnabled = true
                 print("Respuesta erronea")
             }
         }

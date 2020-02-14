@@ -9,7 +9,5 @@
 import UIKit
 
 class PetCell: UITableViewCell {
-    
-    @IBOutlet weak var pet_image: UIImageView!
     @IBOutlet weak var pet_name: UILabel!
 }
