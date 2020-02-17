@@ -48,9 +48,11 @@ class RecoverPasswordViewController: UIViewController {
             self.button_recover.isEnabled = false
             switch(response.response?.statusCode){
             case 200:
-                let alert = UIAlertController(title: "Correcto", message: "Nueva contraseña enviada con éxito", preferredStyle: .alert)
+                self.loader.isHidden = true
+                self.button_recover.isEnabled = true
+                /*let alert = UIAlertController(title: "Correcto", message: "Nueva contraseña enviada con éxito", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "ok", style: .cancel, handler: { (accion) in}))
-                self.present(alert,animated: true, completion: nil)
+                self.present(alert,animated: true, completion: nil)*/
                 self.performSegue(withIdentifier: "password_restore_segue", sender: nil)
             case 401:
                 self.loader.isHidden = true

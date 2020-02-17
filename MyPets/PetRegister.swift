@@ -23,6 +23,7 @@ class PetRegister: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     @IBOutlet weak var birthday_picker: UIDatePicker!
     @IBOutlet weak var button_save: UIButton!
     @IBOutlet weak var loader: UIActivityIndicatorView!
+    @IBOutlet weak var date_error: UILabel!
     
     let species = ["Perro", "Gato", "Reptil", "Roedor", "Ave"]
     var selected_specie = "Perro"
@@ -118,6 +119,7 @@ class PetRegister: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
                     print(response.result.value)
                     self.loader.isHidden = true
                     self.button_save.isEnabled = true
+                    _ = self.navigationController?.popViewController(animated: true)
                 }
             case .failure(let encodingError):
                 print("ERROR ", encodingError)
@@ -147,11 +149,17 @@ class PetRegister: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     
     @IBAction func date_picker(_ sender: UIDatePicker) {
         let date_formatter = DateFormatter()
-        print(sender.date)
         date_formatter.dateStyle = DateFormatter.Style.short
         date_formatter.dateFormat = "yyyy-MM-dd"
-        date_str = date_formatter.string(from: sender.date)
-        print(date_str!)
+        let today_date = Date()
+        let today = date_formatter.string(from: today_date)
+        let date_selected = date_formatter.string(from: sender.date)
+        if today > date_selected{
+            date_str = date_formatter.string(from: sender.date)
+            date_error.isHidden = true
+        }else{
+            date_error.isHidden = false
+        }
     }
 }
 var image_global: UIImage?
