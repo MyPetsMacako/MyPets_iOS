@@ -110,7 +110,7 @@ extension UIImageView {
             case .custom(_, _, let animations, _):
                 return animations
             default:
-                return { $0.image = $1 }
+                return {_,_ in }
             }
         }
 
@@ -286,20 +286,20 @@ extension UIImageView {
         // Use the image from the image cache if it exists
         if
             let request = urlRequest.urlRequest,
-            let image = imageCache?.image(for: request, withIdentifier: filter?.identifier)
+            let imageView = imageCache?.image(for: request, withIdentifier: filter?.identifier)
         {
-            let response = DataResponse<UIImage>(request: request, response: nil, data: nil, result: .success(image))
+            let response = DataResponse<UIImage>(request: request, response: nil, data: nil, result: .success(imageView))
 
             if runImageTransitionIfCached {
                 let tinyDelay = DispatchTime.now() + Double(Int64(0.001 * Float(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
 
                 // Need to let the runloop cycle for the placeholder image to take affect
                 DispatchQueue.main.asyncAfter(deadline: tinyDelay) {
-                    self.run(imageTransition, with: image)
+                    self.run(imageTransition, with: imageView)
                     completion?(response)
                 }
             } else {
-                self.image = image
+                self.image = imageView
                 completion?(response)
             }
 
@@ -329,8 +329,8 @@ extension UIImageView {
                     return
                 }
 
-                if let image = response.result.value {
-                    strongSelf.run(imageTransition, with: image)
+                if let imageView = response.result.value {
+                    strongSelf.run(imageTransition, with: imageView)
                 }
 
                 strongSelf.af_activeRequestReceipt = nil
@@ -360,12 +360,12 @@ extension UIImageView {
     ///
     /// - parameter imageTransition: The image transition to ran on the image view.
     /// - parameter image:           The image to use for the image transition.
-    public func run(_ imageTransition: ImageTransition, with image: Image) {
+    public func run(_ imageTransition: ImageTransition, with imageView: Image) {
         UIView.transition(
             with: self,
             duration: imageTransition.duration,
             options: imageTransition.animationOptions,
-            animations: { imageTransition.animations(self, image) },
+            animations: { imageTransition.animations(self, imageView) },
             completion: imageTransition.completion
         )
     }

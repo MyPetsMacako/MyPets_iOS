@@ -2,24 +2,32 @@ PODS:
   - Alamofire (4.9.1)
   - AlamofireImage (3.6.0):
     - Alamofire (~> 4.9)
+  - FontAwesome (4.5.0)
   - JTAppleCalendar (7.1.8)
+  - TextFieldEffects (1.6.0)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
+  - FontAwesome
   - JTAppleCalendar (~> 7.1)
+  - TextFieldEffects
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireImage
+    - FontAwesome
     - JTAppleCalendar
+    - TextFieldEffects
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
+  FontAwesome: dd8c48bf965e771309d8af17c4d8579217b3e756
   JTAppleCalendar: b7fb40852f5f319fe55c8ec3861f1de0edc99cc8
+  TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: 647b7582af9ea18ff933d1758d1560c777a10509
+PODFILE CHECKSUM: ae71f445a29c2235ecf52c8ed2f8721690b25b19
 
 COCOAPODS: 1.8.4

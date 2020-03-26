@@ -4,7 +4,8 @@ use_frameworks!
 abstract_target 'all_pods' do
 	pod 'Alamofire'
 	pod 'AlamofireImage'
-	
+	pod 'TextFieldEffects'
+	pod 'FontAwesome'	
 
 target 'MyPets' do
 #	all_pods

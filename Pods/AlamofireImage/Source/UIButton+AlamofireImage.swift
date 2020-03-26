@@ -195,16 +195,16 @@ extension UIButton {
         // Use the image from the image cache if it exists
         if
             let request = urlRequest.urlRequest,
-            let image = imageCache?.image(for: request, withIdentifier: filter?.identifier)
+            let imageView = imageCache?.image(for: request, withIdentifier: filter?.identifier)
         {
             let response = DataResponse<UIImage>(
                 request: urlRequest.urlRequest,
                 response: nil,
                 data: nil,
-                result: .success(image)
+                result: .success(imageView)
             )
 
-            setImage(image, for: state)
+            setImage(imageView, for: state)
             completion?(response)
 
             return
@@ -233,8 +233,8 @@ extension UIButton {
                     return
                 }
 
-                if let image = response.result.value {
-                    strongSelf.setImage(image, for: state)
+                if let imageView = response.result.value {
+                    strongSelf.setImage(imageView, for: state)
                 }
 
                 strongSelf.setImageRequestReceipt(nil, for: state)
@@ -342,16 +342,16 @@ extension UIButton {
         // Use the image from the image cache if it exists
         if
             let request = urlRequest.urlRequest,
-            let image = imageCache?.image(for: request, withIdentifier: filter?.identifier)
+            let imageView = imageCache?.image(for: request, withIdentifier: filter?.identifier)
         {
             let response = DataResponse<UIImage>(
                 request: urlRequest.urlRequest,
                 response: nil,
                 data: nil,
-                result: .success(image)
+                result: .success(imageView)
             )
 
-            setBackgroundImage(image, for: state)
+            setBackgroundImage(imageView, for: state)
             completion?(response)
 
             return
@@ -380,8 +380,8 @@ extension UIButton {
                     return
                 }
 
-                if let image = response.result.value {
-                    strongSelf.setBackgroundImage(image, for: state)
+                if let imageView = response.result.value {
+                    strongSelf.setBackgroundImage(imageView, for: state)
                 }
 
                 strongSelf.setBackgroundImageRequestReceipt(nil, for: state)

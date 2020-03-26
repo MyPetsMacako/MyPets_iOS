@@ -44,10 +44,10 @@ extension UIImage {
     /// - returns: An initialized `UIImage` object, or `nil` if the method failed.
     public static func af_threadSafeImage(with data: Data) -> UIImage? {
         lock.lock()
-        let image = UIImage(data: data)
+        let imageView = UIImage(data: data)
         lock.unlock()
 
-        return image
+        return imageView
     }
 
     /// Initializes and returns the image object with the specified data and scale in a thread-safe manner.
@@ -64,10 +64,10 @@ extension UIImage {
     /// - returns: An initialized `UIImage` object, or `nil` if the method failed.
     public static func af_threadSafeImage(with data: Data, scale: CGFloat) -> UIImage? {
         lock.lock()
-        let image = UIImage(data: data, scale: scale)
+        let imageView = UIImage(data: data, scale: scale)
         lock.unlock()
 
-        return image
+        return imageView
     }
 }
 
@@ -290,13 +290,13 @@ extension UIImage {
     ///
     /// - returns: A new image object, or `nil` if the filter failed for any reason.
     public func af_imageFiltered(withCoreImageFilter name: String, parameters: [String: Any]? = nil) -> UIImage? {
-        var image: CoreImage.CIImage? = ciImage
+        var imageView: CoreImage.CIImage? = ciImage
 
-        if image == nil, let CGImage = self.cgImage {
-            image = CoreImage.CIImage(cgImage: CGImage)
+        if imageView == nil, let CGImage = self.cgImage {
+            imageView = CoreImage.CIImage(cgImage: CGImage)
         }
 
-        guard let coreImage = image else { return nil }
+        guard let coreImage = imageView else { return nil }
 
         #if swift(>=4.2)
         let context = CIContext(options: [.priorityRequestLow: true])
